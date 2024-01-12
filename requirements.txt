@@ -2,4 +2,6 @@ numpy
 pandas
 tensorflow
 streamlit
--e .
+dill
+scikit-learn
+# -e .

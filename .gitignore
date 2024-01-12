@@ -79,6 +79,7 @@ target/
 .ipynb_checkpoints
 notebook/
 notebook/data/
+artifacts/
 
 # IPython
 profile_default/
