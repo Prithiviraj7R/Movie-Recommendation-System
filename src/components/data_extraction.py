@@ -17,6 +17,7 @@ from sklearn.model_selection import train_test_split
 
 @dataclass
 class DataExtractionConfig:
+    raw_data_path: str = os.path.join('artifacts','user_item.pkl')
     train_data_path: str = os.path.join('artifacts','train_user_item.pkl')
     test_data_path: str = os.path.join('artifacts','test_user_item.pkl')
     movie_list_path: str = os.path.join('artifacts','movies_list.pkl')
@@ -59,6 +60,7 @@ class DataExtraction:
 
             train_user_item,test_user_item = train_test_split(user_item.values, test_size=0.2, random_state=42)
 
+            save_file(self.data_extraction_config.raw_data_path,user_item)
             save_file(self.data_extraction_config.train_data_path,train_user_item)
             save_file(self.data_extraction_config.test_data_path,test_user_item)
 
@@ -67,6 +69,7 @@ class DataExtraction:
             return(
                 train_user_item,
                 test_user_item,
+                self.data_extraction_config.raw_data_path,
                 self.data_extraction_config.train_data_path,
                 self.data_extraction_config.test_data_path
             )

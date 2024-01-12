@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from src.exception import CustomException
 from src.logger import logging
 from src.components.data_extraction import DataExtraction,DataExtractionConfig
+from src.components.model_training import ModelTrainer,ModelTrainerConfig
 
 import pandas as pd
 
@@ -55,4 +56,9 @@ if __name__ == "__main__":
     movies_path,ratings_path,_ = obj.initiate_data_ingestion()
 
     data_extraction = DataExtraction()
-    _,_ = data_extraction.initiate_data_extraction(movies_path,ratings_path)
+    train_data,test_data,_,_,_ = data_extraction.initiate_data_extraction(movies_path,ratings_path)
+
+    model_trainer = ModelTrainer()
+    report = model_trainer.initiate_model_training(train_data,test_data)
+    print(report)
+
