@@ -84,7 +84,7 @@ def recommender(movie):
         similar_movie_indices = np.argsort(cosine_similarity)[::-1]
         similar_movie_indices = [movie_indices for movie_indices in similar_movie_indices if movie_indices != movie_index]
 
-        top = 5
+        top = 4
         top_movies = similar_movie_indices[:top]
         top_movie_names = user_item.index[top_movies].tolist()
 
