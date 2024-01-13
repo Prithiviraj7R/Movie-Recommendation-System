@@ -30,6 +30,8 @@ class ModelTrainer:
 
             report = evaluate_model(model_path,embeddings_path,train_data,test_data)
 
+            logging.info("Model has been trained!")
+
             return report
 
         except Exception as e:

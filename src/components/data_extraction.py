@@ -32,7 +32,6 @@ class DataExtraction:
             movies_df = pd.read_csv(movies_path)
             ratings_df = pd.read_csv(ratings_path)
 
-            movies_df['title'] = movies_df['title'].apply(extract_movie_name)
             movies_info = movies_df.merge(ratings_df, on='movieId')
 
             user_rating_threshold = 500

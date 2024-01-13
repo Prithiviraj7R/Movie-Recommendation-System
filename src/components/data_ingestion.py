@@ -11,6 +11,7 @@ from src.exception import CustomException
 from src.logger import logging
 from src.components.data_extraction import DataExtraction,DataExtractionConfig
 from src.components.model_training import ModelTrainer,ModelTrainerConfig
+from src.utils import extract_movie_name
 
 import pandas as pd
 
@@ -30,6 +31,8 @@ class DataIngestion:
             movies_df = pd.read_csv(r'notebook\data\ml-25m\movies.csv')
             ratings_df = pd.read_csv(r'notebook\data\ml-25m\ratings.csv')
             links_df = pd.read_csv(r'notebook\data\ml-25m\links.csv')
+
+            movies_df['title'] = movies_df['title'].apply(extract_movie_name)
 
             logging.info("Data has been read into a dataframe")
 
